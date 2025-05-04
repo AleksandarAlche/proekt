@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NBA Award Predictor</title>
+    <link rel="stylesheet" href="syle.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>NBA Award Predictor</h1>
+
+      <div class="dashboard">
+        <div class="card">
+          <h2>Model Accuracy</h2>
+          <div class="accuracy-chart">
+            <canvas id="accuracyChart"></canvas>
+            <div id="accuracyText" class="accuracy-text">--</div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Total Seasons</h2>
+          <div class="stat-number" id="totalSeasons">--</div>
+        </div>
+        <div class="card">
+          <h2>Correct Predictions</h2>
+          <div class="stat-number" id="correctPredictions">--</div>
+        </div>
+      </div>
+
+      <div class="filters">
+        <input type="text" id="search" placeholder="Search by player name..." />
+        <div class="toggle-buttons">
+          <button id="mvpToggle" class="toggle-btn active">MVP</button>
+          <button id="dpoyToggle" class="toggle-btn">DPOY</button>
+        </div>
+        <div class="filter-options">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="match">
+            Correct Predictions
+          </button>
+          <button class="filter-btn" data-filter="no-match">
+            Incorrect Predictions
+          </button>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table id="predictionsTable">
+          <thead>
+            <tr id="predictionsHeader">
+              <th>Season</th>
+              <th>Predicted MVP</th>
+              <th>Actual MVP</th>
+              <th>Match</th>
+            </tr>
+          </thead>
+          <tbody id="predictionsBody">
+            <tr>
+              <td colspan="4" class="loading">Loading prediction data...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="model-info">
+        <h2>About the Model</h2>
+        <p>
+          This prediction model uses a Random Forest Classifier trained on
+          player statistics from 1980 to 2023.
+        </p>
+        <h3>Features Used</h3>
+        <div class="feature-list" id="featureList"></div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="js.js"></script>
+  </body>
+</html>
